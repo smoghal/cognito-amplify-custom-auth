@@ -116,7 +116,7 @@ class Login extends Component {
                       type="submit">
                       Login
                     </Form.Field>
-                    <Link to="/register"><Button compact disabled floated="right">Register</Button></Link>
+                    <Link to="/register"><Button compact floated="right">Register</Button></Link>
                   </Segment>
                 </div>
               </Form>
