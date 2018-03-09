@@ -95,9 +95,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  // return {
-  //   action: bindActionCreators({ validateUserAction }, dispatch)
-  // };
   return {
     ...bindActionCreators({
       validateUserAction}, dispatch),
