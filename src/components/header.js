@@ -5,7 +5,7 @@ const AppHeader = () => (
   <div className="header-page">
     <Header attached="top" textAlign="center">
       <div className="nav-logo">&nbsp;</div>
-      Project Octagon
+      Cognito Userpool Authentication - Custom UI
     </Header>
   </div>
 );
