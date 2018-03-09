@@ -41,10 +41,6 @@ export function login({ username, password }, history) {
         } else if (data.challengeName === 'MFA_REQUIRED' || data.challengeName === 'SMS_MFA') {
           dispatch({ type: AUTH_MFA, payload: data});
         } else {
-          // store the tokens in sessionStorage
-          sessionStorage.setItem('authenticated', true);
-          sessionStorage.setItem('idToken', data.signInUserSession.idToken.getJwtToken());
-          sessionStorage.setItem('username', data.username);
           // dispatch AUTH_USER
           dispatch({ type: AUTH_USER });
 
@@ -120,13 +116,6 @@ export function setNewPassword( { cognitoUser, newPassword }, history ) {
         if (data.challengeName === 'SMS_MFA' ) {
           dispatch({ type: AUTH_MFA, payload: data});
         } else {
-
-          // TODO - untested code path !!
-
-          // store the tokens in sessionStorage
-          sessionStorage.setItem('authenticated', true);
-          sessionStorage.setItem('idToken', data.signInUserSession.idToken.getJwtToken());
-          sessionStorage.setItem('username', data.username);
           // dispatch AUTH_USER
           dispatch({ type: AUTH_USER });
 
@@ -153,10 +142,6 @@ export function logout( {username}, history) {
       .then( data => {
         console.log('actions.logout():Auth.signOut() data:', data);
 
-        // save result in session
-        sessionStorage.removeItem('authenticated');
-        sessionStorage.removeItem('idToken');
-        sessionStorage.removeItem('username');
         dispatch({ type: UNAUTH_USER });
 
         // we have authenticated, lets navigate to /main route
@@ -181,10 +166,6 @@ export function confirmLogin( { cognitoUser, code }, history ) {
       .then( data => {
         console.log('actions.confirmLogin():Auth.confirmSignIn() data: ', data);
 
-        // store the tokens in sessionStorage
-        sessionStorage.setItem('authenticated', true);
-        sessionStorage.setItem('idToken', data.signInUserSession.idToken.getJwtToken());
-        sessionStorage.setItem('username', data.username);
         // dispatch AUTH_USER
         dispatch({ type: AUTH_USER });
 
