@@ -10,16 +10,26 @@ package-lock.json
 *.iml
 /.idea
 
-# production
-/build
+# build resources
+build
+dist
 
-# misc
+# files
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.lock
+*gz
+*local.md
+*.local
+*.public
+*old
+
+# git
+!.gitkeep
+
+# misc project specifics
+tmp
+docs
+cert
