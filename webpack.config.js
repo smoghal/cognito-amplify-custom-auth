@@ -1,7 +1,7 @@
-const webpack = require('webpack');
-
-//const combineLoaders = require('webpack-combine-loaders');
+/* eslint-disable no-undef */
 module.exports = {
+  // https://webpack.js.org/concepts/mode/
+  mode: 'development',
   entry: [
     'babel-polyfill',
     './src/index.js'
@@ -12,37 +12,23 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
-      }
-    },
-    {
-      // https://aws.amazon.com/blogs/developer/using-webpack-and-the-aws-sdk-for-javascript-to-create-and-bundle-an-application-part-1/
-      test: /.json$/,
-      loaders: ['json-loader']
-    }/*,
-    {
-      // https://github.com/jackfranklin/react-css-modules-webpack/blob/master/webpack.config.dev.js
-      test: /\.css$/,
-      loader: combineLoaders([
-        {
-          loader: 'style-loader'
-        }, {
-          loader: 'css-loader',
-          query: {
-            modules: true,
-            localIdentName: '[name]__[local]___[hash:base64:5]'
-          }
+    rules: [{
+      test: /(\.js$|\.jsx$)/,
+      exclude: /(node_modules|bower_components)/,
+
+      use: [{
+        loader: 'babel-loader',
+
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react']
         }
-      ])
-    }*/
-    ]
+      }]
+    }]
   },
   resolve: {
-    extensions: [ '.js', '.jsx']
+    extensions: [
+      '.js', '.jsx'
+    ]
   },
   devServer: {
     historyApiFallback: true,
@@ -52,10 +38,11 @@ module.exports = {
   // plugins: [
   //   new webpack.DefinePlugin({
   //     DEVELOPMENT: JSON.stringify(true),
-  //     AWS_REGION: JSON.stringify('YOUR_AWS_REGION'),
-  //     AWS_COGNITO_IDENTITY_POOL_ID: JSON.stringify('YOUR_COGNITO_ID_POOL'),
-  //     AWS_COGNITO_USER_POOL_ID: JSON.stringify('YOUR_COGNITO_USER_POOL'),
-  //     AWS_COGNITO_CLIENT_ID: JSON.stringify('YOUR_COGNITO_CLIENT_ID')
+  //     AWS_REGION: JSON.stringify('us-east-1'),
+  //     AWS_COGNITO_IDENTITY_POOL_ID: JSON.stringify('us-east-1:XYZ'),
+  //     AWS_COGNITO_USER_POOL_ID: JSON.stringify('us-east-1_XYZ'),
+  //     AWS_COGNITO_CLIENT_ID: JSON.stringify('XYZ')
   //   })
   // ]
 };
+/* eslint-enable no-undef */
