@@ -14,4 +14,4 @@ The web application is written using React, Redux & Webpack.  It uses redux-form
 - Alternatively, if in VSCode, launch the server using the `Launch Webpack Development Server (WDS)` in VSCode `Debug` view.
 - In order to distrubute the application (S3 for example):
   - `yarn build`
-  - copy `build.js`, `style/*`, `image/*style.css*`, `index.html` to S3 static website
+  - copy `build.js`, `style/*`, `image/*`, `index.html` to S3 static website
